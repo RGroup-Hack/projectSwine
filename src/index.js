@@ -8,7 +8,7 @@ const port = process.env.port || 3000;
 
 
 app.get('/', (req, res) => {
-   res.send('hello world!'); 
+   res.status(200).send('hello world!');
 });
 
 app.use('/pessoa', routePessoa);
