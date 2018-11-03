@@ -8,7 +8,6 @@ const mongoose = require('mongoose');
 
 //rotas
 const routePessoa = require('./routes/pessoa');
-const socketHandler = require('./routes/socket')(io);
 
 const port = process.env.PORT || 3000;
 
