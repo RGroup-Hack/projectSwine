@@ -10,16 +10,19 @@ router.get('/', (req, res, next) => {
     });
 });
 
-router.post('/', (req, res, next) => {
+router.post('/', async (req, res, next) => {
     const pessoa = new Pessoa({
         _id: new mongoose.Types.ObjectId(),
         name: req.body.name,
     });
     
-    pessoa.save();
+    pessoa.save((err) => {
+        if(err){
+            res.status(500);
+            next();
+        }
 
-    res.status(201).json({
-        message: 'POST pessoa'
+        res.status(201).json(JSON.stringify(pessoa));
     });
 });
 

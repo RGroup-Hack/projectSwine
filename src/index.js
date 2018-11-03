@@ -12,7 +12,7 @@ const socketHandler = require('./routes/socket')(io);
 
 const port = process.env.PORT || 3000;
 
-mongoose.connect('mongodb://app:swine123@ds151293.mlab.com:51293/project-swine', {
+mongoose.connect(process.env.MONGODB_URI_DEV, {
   useNewUrlParser: true
 });
 
