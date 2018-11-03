@@ -4,12 +4,17 @@ const http = require('http');
 const server = http.Server(app);
 const socketIO = require('socket.io');
 const io = socketIO(server);
+const mongoose = require('mongoose');
 
 //rotas
 const routePessoa = require('./routes/pessoa');
 const socketHandler = require('./routes/socket')(io);
 
 const port = process.env.PORT || 3000;
+
+mongoose.connect('mongodb://app:swine123@ds151293.mlab.com:51293/project-swine', {
+  useNewUrlParser: true
+});
 
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', 'http://localhost:5500');

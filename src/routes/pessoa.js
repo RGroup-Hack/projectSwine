@@ -1,5 +1,8 @@
 const express = require('express');
+const mongoose = require('mongoose');
 const router = express.Router();
+
+const Pessoa = require('../models/pessoa');
 
 router.get('/', (req, res, next) => {
     res.status(200).json({
@@ -8,7 +11,14 @@ router.get('/', (req, res, next) => {
 });
 
 router.post('/', (req, res, next) => {
-    res.status(200).json({
+    const pessoa = new Pessoa({
+        _id: new mongoose.Types.ObjectId(),
+        name: req.body.name,
+    });
+    
+    pessoa.save();
+
+    res.status(201).json({
         message: 'POST pessoa'
     });
 });
