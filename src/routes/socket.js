@@ -2,7 +2,7 @@ module.exports = function(io){
     io.origins(['*:*', 'http://localhost:5500']);
 
     const events = {
-        endOfTracking: 'closingAssists',
+        endOfTracking: 'closingAssist',
         sendMyPosition: 'sendMyPostion',
         receiveAnotherPosition: 'receiveAnotherPosition',
         catchAssist: 'catchAssist',
@@ -18,7 +18,7 @@ module.exports = function(io){
         socket.on(events.endOfTracking, (data) => {
             console.log(data.over);
             socket.emit('teste', {msg: 'hello from server!'});
-        });
+        })
     });
 
 };

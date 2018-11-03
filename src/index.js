@@ -13,7 +13,7 @@ socketHandler(io);
 
 const port = process.env.PORT || 3000;
 
-mongoose.connect(process.env.MONGODB_URI_DEV, {
+mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true
 });
 
