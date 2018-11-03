@@ -48,8 +48,18 @@ router.post('/', (req, res, next) => {
     
     pessoa.save();
 
-    res.status(201).json({
-        message: 'POST pessoa'
+    res.status(201).json(pessoa);
+});
+
+router.delete('/:id', (req,res,next) => {
+    const id = req.params.id;
+    Pessoa.deleteOne( { "_id" : id })
+    .exec()
+    .then( result => {
+        res.status(200).json(result);
+    })
+    .catch(err => {
+        res.status(500).json(err);
     });
 });
 
