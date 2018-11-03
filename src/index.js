@@ -8,8 +8,6 @@ const mongoose = require('mongoose');
 
 //rotas
 const routePessoa = require('./routes/pessoa');
-const socketHandler = require('./routes/socket');
-socketHandler(io);
 
 const port = process.env.PORT || 3000;
 
@@ -38,10 +36,10 @@ app.get('/', (req, res) => {
 });
 
 app.use('/pessoa', routePessoa);
-//app.use('/socket', routeSocket);
 
 app.use((req, res, next) => {
   const err = new Error('Resource not found');
+  err.status = 404;
   next(err);
 });
 
