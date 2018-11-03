@@ -25,6 +25,21 @@ router.get('/:id', (req,res,next) => {
     });
 });
 
+router.put('/:id', (req, res, next) => {
+    const id = req.params.id;
+    const body = req.body;
+    Pessoa.findById(id)
+    .exec()
+    .then(pess => {
+        pess.name = body.name;
+        pess.save();
+        res.status(200).json(pess);
+    })
+    .catch(err => {
+        res.status(500).json(err);
+    });
+});
+
 router.post('/', (req, res, next) => {
     const pessoa = new Pessoa({
         _id: new mongoose.Types.ObjectId(),
