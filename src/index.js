@@ -31,10 +31,5 @@ app.use((err, req, res, next) => {
 });
 
 app.listen(port, function () {
-<<<<<<< HEAD
-  console.log('Example app listening on port 3000!');
+  console.log('Example app listening on port ' + port + '!');
 });
-=======
-    console.log('Example app listening on port ' + port + '!');
-  });
->>>>>>> 524a6379a7e5ca4de1d3b8f2d7f490c5d4682fbf
