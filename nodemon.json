@@ -1,0 +1,6 @@
+{
+    "env":{
+        "MONGODB_URI": "mongodb://heroku_r6pgpqz5:qill66kkpibldo4kmla3eimbko@ds151393.mlab.com:51393/heroku_r6pgpqz5",
+        "MONGODB_URI_DEV": "mongodb://app:swine123@ds151293.mlab.com:51293/project-swine"
+    }
+}

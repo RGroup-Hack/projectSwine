@@ -7,6 +7,8 @@ const io = socketIO(server);
 
 //rotas
 const routePessoa = require('./routes/pessoa');
+const routeSocket = require('./routes/socket');
+routeSocket(io);
 
 const port = process.env.PORT || 3000;
 
@@ -18,8 +20,6 @@ app.use((req, res, next) => {
     res.header('Access-Control-Allow-Methods', 'PUT, POST, PATCH, GET, DELETE');
     return res.status(200).json({});
   }
-
-  req.io = io;
 
   next();
 });
