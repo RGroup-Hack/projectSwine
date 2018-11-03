@@ -8,11 +8,12 @@ const mongoose = require('mongoose');
 
 //rotas
 const routePessoa = require('./routes/pessoa');
-const socketHandler = require('./routes/socket')(io);
+const socketHandler = require('./routes/socket');
+socketHandler(io);
 
 const port = process.env.PORT || 3000;
 
-mongoose.connect('mongodb://app:swine123@ds151293.mlab.com:51293/project-swine', {
+mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true
 });
 
@@ -41,7 +42,6 @@ app.use('/pessoa', routePessoa);
 
 app.use((req, res, next) => {
   const err = new Error('Resource not found');
-  err.status = 404;
   next(err);
 });
 
