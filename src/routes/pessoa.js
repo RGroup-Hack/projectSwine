@@ -1,5 +1,8 @@
 const express = require('express');
+const mongoose = require('mongoose');
 const router = express.Router();
+
+const Pessoa = require('../models/pessoa');
 
 router.get('/', (req, res, next) => {
 
@@ -33,13 +36,36 @@ router.put('/:id', (req, res, next) => {
         res.status(200).json(pess);
     })
     .catch(err => {
-        res.status(500).json(err);
+        res.status(500).json(err.message);
     });
 });
 
 router.post('/', (req, res, next) => {
-    res.status(200).json({
-        message: 'POST pessoa'
+    const pessoa = new Pessoa({
+        _id: new mongoose.Types.ObjectId(),
+        name: req.body.name,
+    });
+
+    pessoa.save((err) => {
+        if(err){
+            err.status = 500;
+            err.message = "Erro ao criar pessoa";
+            next(err);
+        };
+
+    res.status(201).json(pessoa);
+    })
+});
+
+router.delete('/:id', (req,res,next) => {
+    const id = req.params.id;
+    Pessoa.deleteOne( { "_id" : id })
+    .exec()
+    .then( result => {
+        res.status(200).json(result);
+    })
+    .catch(err => {
+        res.status(500).json(err);
     });
 });
 

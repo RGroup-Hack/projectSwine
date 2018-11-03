@@ -4,6 +4,7 @@ const http = require('http');
 const server = http.Server(app);
 const socketIO = require('socket.io');
 const io = socketIO(server);
+const mongoose = require('mongoose');
 
 //rotas
 const routePessoa = require('./routes/pessoa');
@@ -11,6 +12,12 @@ const routeSocket = require('./routes/socket');
 routeSocket(io);
 
 const port = process.env.PORT || 3000;
+
+mongoose.connect(process.env.MONGODB_URI, {
+  useNewUrlParser: true
+});
+
+app.use(express.json());
 
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', 'http://localhost:5500');
