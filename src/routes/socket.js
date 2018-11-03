@@ -1,13 +1,8 @@
-const express = require('express');
-const router = express.Router();
-const app = express();
-const http = require('http');
-const server = http.Server(app);
-const socketIO = require('socket.io');
-const io = socketIO(server);
+module.exports = function(io){
+    io.origins(['*:*', 'http://localhost:5500']);
 
-io.on('connection', (socket) => {
-    console.log('connected');
-});
+    io.on('connection', (socket) => {
+        console.log('connected');
+    });
 
-module.exports = router;
+};
