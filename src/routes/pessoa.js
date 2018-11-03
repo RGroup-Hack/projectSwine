@@ -5,8 +5,23 @@ const router = express.Router();
 const Pessoa = require('../models/pessoa');
 
 router.get('/', (req, res, next) => {
-    res.status(200).json({
-        message: 'GET pessoa'
+
+    Pessoa.find()
+    .exec()
+    .then((pessoas) => {
+        res.status(200).json(pessoas);
+    })
+});
+
+router.get('/:id', (req,res,next) => {
+    var id = req.params.id;
+    Pessoa.findById(id)
+    .exec()
+    .then( pess => {
+        res.status(200).json(pess);
+    })
+    .catch(err => {
+        res.status(200).json([]);
     });
 });
 
