@@ -45,10 +45,16 @@ router.post('/', (req, res, next) => {
         _id: new mongoose.Types.ObjectId(),
         name: req.body.name,
     });
-    
-    pessoa.save();
+
+    pessoa.save((err) => {
+        if(err){
+            err.status = 500;
+            err.message = "Erro ao criar pessoa";
+            next(err);
+        };
 
     res.status(201).json(pessoa);
+    })
 });
 
 router.delete('/:id', (req,res,next) => {
