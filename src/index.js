@@ -4,7 +4,7 @@ const app = express();
 //rotas
 const routePessoa = require('./routes/pessoa');
 
-const port = process.env.port || 3000;
+const port = process.env.PORT || 3000;
 
 
 app.get('/', (req, res) => {
