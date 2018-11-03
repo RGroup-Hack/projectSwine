@@ -1,0 +1,23 @@
+{
+  "name": "projectSwine",
+  "version": "0.1.0",
+  "description": "\"# Project Swine\"",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RGroup-Hack/projectSwine.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RGroup-Hack/projectSwine/issues"
+  },
+  "homepage": "https://github.com/RGroup-Hack/projectSwine#readme",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}
