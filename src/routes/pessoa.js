@@ -48,11 +48,12 @@ router.post('/', (req, res, next) => {
     
     pessoa.save((err) => {
         if(err){
-            res.status(500);
-            next();
+            err.status = 500;
+            err.message = "Erro ao criar pessoa";
+            next(err);
         }
 
-        res.status(201).json(JSON.stringify(pessoa));
+        res.status(201).json(pessoa);
     });
 });
 

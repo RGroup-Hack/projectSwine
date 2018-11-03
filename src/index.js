@@ -36,7 +36,6 @@ app.get('/', (req, res) => {
 });
 
 app.use('/pessoa', routePessoa);
-//app.use('/socket', routeSocket);
 
 app.use((req, res, next) => {
   const err = new Error('Resource not found');
