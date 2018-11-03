@@ -4,7 +4,7 @@ const app = express();
 //rotas
 const routePessoa = require('./routes/pessoa');
 
-const port = process.env.port || 3000;
+const port = process.env.PORT || 3000;
 
 
 app.get('/', (req, res) => {
@@ -31,5 +31,10 @@ app.use((err, req, res, next) => {
 });
 
 app.listen(port, function () {
+<<<<<<< HEAD
   console.log('Example app listening on port 3000!');
 });
+=======
+    console.log('Example app listening on port ' + port + '!');
+  });
+>>>>>>> 524a6379a7e5ca4de1d3b8f2d7f490c5d4682fbf
