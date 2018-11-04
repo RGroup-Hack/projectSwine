@@ -99,7 +99,7 @@ module.exports = function(io){
 
             needingHelp.push(helped);
             console.log(`event: ${events.requestAssist}`);
-            console.log(`${needingHelp.map((person) => `${person.name} ${person.socket.id}`).join(' | ')}`);
+            console.log(`${needingHelp.map((person) => `${person.viagem.idAjudado} ${person.socket.id}`).join(' | ')}`);
             socket.emit(`${events.requestAssist}${posFix}`, {msg: `hello from server! - ${events.requestAssist}`});
         });
         socket.on(events.receiveAssist, (data) => {
