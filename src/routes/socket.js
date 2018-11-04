@@ -79,7 +79,11 @@ module.exports = function(io){
 
         });
         socket.on(events.catchAssist, (data) => {
+            let socketAssistido = connected.find( (helpData) => {
+                return helpData.id == data;
+            });
 
+            socketAssistido.emit(events.receiveAssist, socket.id);
         });
         socket.on(events.requestAssist, (data) => {
             const maxDistance = 0.1;
