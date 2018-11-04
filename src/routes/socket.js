@@ -75,18 +75,18 @@ module.exports = function(io){
 
         });
         socket.on(events.catchAssist, (data) => {
-            
+
         });
         socket.on(events.requestAssist, (data) => {
             const maxDistance = 0.1;
 
             const {origem, destino, info, name } = data;
-            const viagem = new Viagem();
+            var viagem = new Viagem();
             viagem.idAjudado = name;
             viagem.origem = origem;
             viagem.destino = destino;
             viagem.latInicial = origem.lat;
-            viagem.longInicial = origen.long;
+            viagem.longInicial = origem.long;
             viagem.latFinal = destino.lat;
             viagem.longFinal = destino.long;
             viagem.addressInicial = origem.address;
