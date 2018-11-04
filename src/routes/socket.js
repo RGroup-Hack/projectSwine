@@ -69,8 +69,8 @@ module.exports = function(io){
                     position: helped.viagem.origem,
                     destino: helped.viagem.destino,
                     socketId: helped.socket.id,
-                    deficiencia: "Visual",
-                    info: helped.info
+                    deficiencia: "Deficiencia Visual",
+                    info: helped.viagem.info
                 }
             });    
             //console.log(`${helpers.map((person) => `${person.name} ${person.socket.id}`).join(' | ')}`);    
