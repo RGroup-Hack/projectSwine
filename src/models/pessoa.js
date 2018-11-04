@@ -5,6 +5,7 @@ const pessoaSchema = mongoose.Schema({
     name: String,
     email: String,
     senha: String,
+    avatar: String,
     deficiencia: String
 });
 

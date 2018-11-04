@@ -1,4 +1,6 @@
 const getDistanceBetweenPeople = require('../utils/distance');
+const Pessoa = require('../models/pessoa');
+const Viagem = require('../models/viagem'); 
 
 module.exports = function(io){
     io.origins(['*:*', 'http://localhost:5500']);
@@ -48,7 +50,7 @@ module.exports = function(io){
             }
 
             const needingHelpList = needingHelp.filter((helped) => {
-                const p1 = {lat1: helped.position.latitude, lon1: helped.position.longitude};
+                const p1 = {lat1: helped.viagem.origem.latitude, lon1: helped.viagem.origem.longitude};
                 const p2 = {lat2: helper.position.latitude, lon2: helper.position.longitude};
 
                 const d = getDistanceBetweenPeople(p1, p2);  
@@ -62,8 +64,8 @@ module.exports = function(io){
             })
             .map((helped) => {
                 return {
-                    name: helped.name,
-                    location: helped.location,
+                    name: helped.viagem.idAjudado,
+                    position: helped.viagem.origem,
                     socketId: helped.socket.id,
                 }
             });    
@@ -73,21 +75,29 @@ module.exports = function(io){
 
         });
         socket.on(events.catchAssist, (data) => {
-
+            const {socket}
         });
         socket.on(events.requestAssist, (data) => {
             const maxDistance = 0.1;
 
-            const { name, position, destination } = data;
+            const {origem, destino, info, name } = data;
+            const viagem = new Viagem();
+            viagem.idAjudado = name;
+            viagem.origem = origem;
+            viagem.destino = destino;
+            viagem.latInicial = origem.lat;
+            viagem.longInicial = origen.long;
+            viagem.latFinal = destino.lat;
+            viagem.longFinal = destino.long;
+            viagem.addressInicial = origem.address;
+            viagem.addressFinal = destino.address;
+            viagem.info = info;
             const helped = {
                 socket,
-                name,
-                position,
-                destination,
+                viagem
             }
 
             needingHelp.push(helped);
-
             console.log(`event: ${events.requestAssist}`);
             console.log(`${needingHelp.map((person) => `${person.name} ${person.socket.id}`).join(' | ')}`);
             socket.emit(`${events.requestAssist}${posFix}`, {msg: `hello from server! - ${events.requestAssist}`});
