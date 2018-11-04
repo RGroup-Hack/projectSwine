@@ -51,7 +51,7 @@ module.exports = function(io){
             }
 
             const needingHelpList = needingHelp.filter((helped) => {
-                const p1 = {lat1: helped.viagem.origem.latitude, lon1: helped.viagem.origem.longitude};
+                const p1 = {lat1: helped.viagem.origem.lat, lon1: helped.viagem.origem.long};
                 const p2 = {lat2: helper.position.latitude, lon2: helper.position.longitude};
 
                 const d = getDistanceBetweenPeople(p1, p2);  
