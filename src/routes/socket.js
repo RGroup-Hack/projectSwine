@@ -62,13 +62,6 @@ module.exports = function(io){
                 }
 
                 return d <= maxDistance;
-            })
-            .map((helped) => {
-                return {
-                    name: helped.viagem.idAjudado,
-                    position: helped.viagem.origem,
-                    socketId: helped.socket.id,
-                }
             });    
             //console.log(`${helpers.map((person) => `${person.name} ${person.socket.id}`).join(' | ')}`);    
             console.log(`event: ${events.findPeople}`);
