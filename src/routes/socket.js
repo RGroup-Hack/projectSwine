@@ -42,6 +42,7 @@ module.exports = function(io){
         socket.on(events.findPeople, (data) => {
             console.log('oi');
             const { name, position } = data;
+            const maxDistance = 0.1;
     
             const helper = {
                 socket,
