@@ -75,7 +75,7 @@ module.exports = function(io){
 
         });
         socket.on(events.catchAssist, (data) => {
-            const {socket}
+            
         });
         socket.on(events.requestAssist, (data) => {
             const maxDistance = 0.1;
